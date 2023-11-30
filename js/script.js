@@ -1,4 +1,5 @@
-// CREO LA FUNZIONE PER GENERARE UN NUMERO CASUALE
+// CREO LA FUNZIONE PER GENERARE ARRAY DI NUMERI CASUALI
+
 function generateNumbers(array_bomb){
     let check = false;
     let randomInt;
@@ -21,18 +22,6 @@ function generateBombs(num) {
     let bombs = [];
     
     for(let i=0; i<num; i++){
-        // let single_bomb;
-        // let check = false;
-
-        // while(check == false) {
-        //     single_bomb = Math.floor(Math.random() * 100 + 1);
-
-        //     if(bombs.includes(single_bomb) == false) {
-        //         check = true;
-        //     }
-
-        // }
-        //     return single_bomb;
 
         bombs.push(generateNumbers(bombs));
     }
@@ -61,22 +50,32 @@ function startToPlay (){
     // VARIABILE DEL BOTTONE
     let button = document.querySelector('.btn');
 
+    // // AVVIO FUNZIONE PER LA CREAZIONE BOMBE
+    // const numberofbombs = 16;
+    // const bombs = generateBombs(numberofbombs);
+
     // CREO EVENTO PER IL CLICK SUL BOTTONE   
     button.addEventListener('click', function(){
-    
+        
+        const numberofbombs = 16;
+        
         grid.innerHTML = '';
-    
+        const bombs = generateBombs(numberofbombs);
+        
         // AVVIO CICLO FOR PER IL NUMERO DI CASELLE
         for(let i=0; i<100; i++) { 
             
             // CHIAMO LA FUNZIONE PER LA CELLA
             let cell = createCell(i+1);
             
-            // BONUS 
+          
             cell.addEventListener('click', function(){
-                this.classList.add('new-bg');
-                console.log(`Questa è la cella numero ${i+1}`)
-                
+                if(bombs.includes(i) == false) {
+                    console.log('non è una bomba')
+                }
+                else {
+                    console.log('è una bomba')
+                }
             })
             
             // AGGIUNGO LA CELLA NEL DOM
@@ -91,6 +90,3 @@ function startToPlay (){
 
 
 startToPlay();
-
-let numberofbombs = 16;
-generateBombs(numberofbombs);

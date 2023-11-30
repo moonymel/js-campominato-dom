@@ -10,8 +10,9 @@ function generateNumbers(array_bomb){
             check = true;
         } 
 
-        return randomInt;
     }
+
+    return randomInt;
 }
 
 // CREO LA FUNZIONE PER GENERARE LE BOMBE
@@ -30,8 +31,8 @@ function generateBombs(num) {
         //         check = true;
         //     }
 
-        //     return single_bomb;
         // }
+        //     return single_bomb;
 
         bombs.push(generateNumbers(bombs));
     }

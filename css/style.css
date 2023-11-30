@@ -17,6 +17,10 @@
     width:1000px;
 }
 
-.new-bg {
+.notabomb {
     background-color:aquamarine;
+}
+
+.isabomb {
+    background-color:rgb(193, 44, 44);
 }

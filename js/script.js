@@ -26,7 +26,7 @@ function generateBombs(num) {
         bombs.push(generateNumbers(bombs));
     }
 
-    console.log(bombs)
+    return bombs;
 }
 
 
@@ -50,10 +50,6 @@ function startToPlay (){
     // VARIABILE DEL BOTTONE
     let button = document.querySelector('.btn');
 
-    // // AVVIO FUNZIONE PER LA CREAZIONE BOMBE
-    // const numberofbombs = 16;
-    // const bombs = generateBombs(numberofbombs);
-
     // CREO EVENTO PER IL CLICK SUL BOTTONE   
     button.addEventListener('click', function(){
         
@@ -61,6 +57,9 @@ function startToPlay (){
         
         grid.innerHTML = '';
         const bombs = generateBombs(numberofbombs);
+        console.log(bombs);
+
+        let points = 0;
         
         // AVVIO CICLO FOR PER IL NUMERO DI CASELLE
         for(let i=0; i<100; i++) { 
@@ -71,10 +70,12 @@ function startToPlay (){
           
             cell.addEventListener('click', function(){
                 if(bombs.includes(i) == false) {
-                    console.log('non è una bomba')
+                    this.classList.add('notabomb');
+                    points++;
+                    document.getElementById('points').innerText = `Il tuo punteggio è di ${points}`;
                 }
                 else {
-                    console.log('è una bomba')
+                    this.classList.add('isabomb')
                 }
             })
             

@@ -1,3 +1,44 @@
+// CREO LA FUNZIONE PER GENERARE UN NUMERO CASUALE
+function generateNumbers(array_bomb){
+    let check = false;
+    let randomInt;
+
+    while(check == false){
+        randomInt = Math.floor(Math.random() * 100 + 1);
+
+        if(array_bomb.includes(randomInt) == false) {
+            check = true;
+        } 
+
+        return randomInt;
+    }
+}
+
+// CREO LA FUNZIONE PER GENERARE LE BOMBE
+
+function generateBombs(num) {
+    let bombs = [];
+    
+    for(let i=0; i<num; i++){
+        // let single_bomb;
+        // let check = false;
+
+        // while(check == false) {
+        //     single_bomb = Math.floor(Math.random() * 100 + 1);
+
+        //     if(bombs.includes(single_bomb) == false) {
+        //         check = true;
+        //     }
+
+        //     return single_bomb;
+        // }
+
+        bombs.push(generateNumbers(bombs));
+    }
+
+    console.log(bombs)
+}
+
 
 // CREO LA FUNZIONE PER LA CELLA
 
@@ -37,15 +78,18 @@ function startToPlay (){
                 
             })
             
-             // AGGIUNGO LA CELLA NEL DOM
+            // AGGIUNGO LA CELLA NEL DOM
             grid.appendChild(cell);
+
             
         }
+        
+
     })
 }
 
 
 startToPlay();
 
-
-
+let numberofbombs = 16;
+generateBombs(numberofbombs);

@@ -57,7 +57,6 @@ function startToPlay (){
         
         grid.innerHTML = '';
         const bombs = generateBombs(numberofbombs);
-        console.log(bombs);
 
         let points = 0;
         
